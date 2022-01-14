@@ -10,7 +10,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    getUser().then((user) => {
+    getUser().then((user) => { // FONTE: https://pt-br.reactjs.org/docs/state-and-lifecycle.html
       this.setState({
         nameLogin: user.name,
       });

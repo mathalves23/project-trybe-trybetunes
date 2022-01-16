@@ -9,7 +9,7 @@ class Login extends React.Component {
     this.state = {
       nameLogin: '',
       isLoading: false,
-      isButtonDisabled: true,
+      isLoginButtonDisabled: true,
       redirectEnable: false,
     };
   }
@@ -19,7 +19,7 @@ class Login extends React.Component {
     const activateButton = value.length >= MIN_CHAR;
     this.setState({
       nameLogin: value,
-      isButtonDisabled: !activateButton,
+      isLoginButtonDisabled: !activateButton,
     });
   }
 
@@ -32,7 +32,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { nameLogin, isLoading, isButtonDisabled, redirectEnable } = this.state;
+    const { nameLogin, isLoading, isLoginButtonDisabled, redirectEnable } = this.state;
     return (
       <div data-testid="page-login">
         <form>
@@ -51,7 +51,7 @@ class Login extends React.Component {
             type="submit"
             data-testid="login-submit-button"
             onClick={ this.handleClick }
-            disabled={ isButtonDisabled }
+            disabled={ isLoginButtonDisabled }
           >
             Entrar
           </button>

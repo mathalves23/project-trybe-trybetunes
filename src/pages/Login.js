@@ -16,6 +16,7 @@ class Login extends React.Component {
 
   handleChange = ({ target: { value } }) => {
     const MIN_CHAR = 3;
+    // Lógica baseada na Mentoria de Revisão do Moisés
     const activateButton = value.length >= MIN_CHAR;
     this.setState({
       nameLogin: value,
@@ -26,7 +27,7 @@ class Login extends React.Component {
   handleClick = () => {
     const { nameLogin } = this.state;
     this.setState({ isLoading: true });
-    createUser({ name: nameLogin }).then(() => {
+    createUser({ name: nameLogin }).then(() => { // FONTE: https://blog.rocketseat.com.br/quando-utililzar-promises-e-async-await-no-useeffect-do-react/
       this.setState({ isLoading: false, redirectEnable: true });
     });
   }

@@ -35,6 +35,7 @@ class Album extends React.Component {
         <div>
           <h1 data-testid="artist-name">{ albumInfo.artistName }</h1>
           <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
+          <img src={ albumInfo.artworkUrl100 } alt={ albumInfo.collectionName } />
           { musicList.map((music, index) => (
             <MusicCard
               key={ index }
@@ -55,7 +56,7 @@ Album.propTypes = {
     }).isRequired,
   }).isRequired,
 };
-// FONTE Sobre diferença entre objectOf e shape:
+// FONTE Sobre diferença entre objectOf e shape em propTypes:
 // https://stackoverflow.com/questions/45764746/react-proptypes-objectof-vs-shape
 
 export default Album;

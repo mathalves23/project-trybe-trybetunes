@@ -27,7 +27,8 @@ class Login extends React.Component {
   handleClick = () => {
     const { nameLogin } = this.state;
     this.setState({ isLoading: true });
-    createUser({ name: nameLogin }).then(() => { // FONTE: https://blog.rocketseat.com.br/quando-utililzar-promises-e-async-await-no-useeffect-do-react/
+    createUser({ name: nameLogin }).then(() => {
+      // FONTE: https://blog.rocketseat.com.br/quando-utililzar-promises-e-async-await-no-useeffect-do-react/
       this.setState({ isLoading: false, redirectEnable: true });
     });
   }

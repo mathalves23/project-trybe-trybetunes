@@ -11,18 +11,22 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    getUser().then((user) => { // FONTE: https://pt-br.reactjs.org/docs/state-and-lifecycle.html
-      this.setState({
-        nameLogin: user.name,
-      });
+    this.newUser();
+  }
+  // Lógica aprendida na monitoria de revisão do Moisés.
+
+  async newUser() {
+    const data = await getUser();
+    this.setState({
+      nameLogin: data.name,
     });
   }
 
   render() {
     const { nameLogin } = this.state;
     return (
-      <>
-        <div data-testid="header-component">
+      <header data-testid="header-component">
+        <div>
           {nameLogin ? <span data-testid="header-user-name">{ nameLogin }</span>
             : (<p>Carregando...</p>)}
         </div>
@@ -45,12 +49,11 @@ class Header extends React.Component {
               to="/profile"
             >
               Profile
-
             </Link>
             {/* FONTE: https://v5.reactrouter.com/web/api/Link */}
           </nav>
         </div>
-      </>
+      </header>
     );
   }
 }

@@ -87,7 +87,7 @@ class Search extends React.Component {
             >
               <div>{artist.collectionName}</div>
             </Link>
-          ))) : <p>Nenhum álbum foi encontrado</p> }
+          ))) : <p> Nenhum álbum foi encontrado </p> }
         </section>
       </main>
     );

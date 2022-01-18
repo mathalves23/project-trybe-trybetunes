@@ -18,7 +18,7 @@ class Album extends React.Component {
     this.getAPI();
   }
 
-  async getAPI() {
+  getAPI = async () => {
     const { match: { params: { id } } } = this.props;
     // FONTE: https://v5.reactrouter.com/web/api/match
     // O match serve para receber parâmetros pela URL.

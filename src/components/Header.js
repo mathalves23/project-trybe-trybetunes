@@ -15,7 +15,7 @@ class Header extends React.Component {
   }
   // Lógica aprendida na monitoria de revisão do Moisés.
 
-  async newUser() {
+  newUser = async () => {
     const data = await getUser();
     this.setState({
       nameLogin: data.name,

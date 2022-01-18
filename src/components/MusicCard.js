@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -12,7 +12,31 @@ class MusicCard extends React.Component {
     };
   }
 
-  onInputChange = async () => {
+  componentDidMount() {
+    this.retrieveFavorites();
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    // Esse Warning foi resolvido no Slack pelo Summer Rod
+    // FONTE: https://trybecourse.slack.com/archives/C02EZT1EJSY/p1642174981051300?thread_ts=1642101209.289600&cid=C02EZT1EJSY
+    this.setState = () => {};
+  }
+
+  retrieveFavorites = () => {
+    const { trackId } = this.props;
+    this.setState({
+      isLoading: true,
+    });
+    getFavoriteSongs().then((favoriteSongs) => {
+      this.setState({
+        isLoading: false,
+        isFavorite: favoriteSongs.some((music) => music.trackId === trackId),
+      });
+    });
+  }
+
+  handleCheck = async () => {
     const { trackId } = this.props;
     this.setState((prevState) => ({
       isFavorite: !prevState.favorite,
@@ -41,7 +65,7 @@ class MusicCard extends React.Component {
             type="checkbox"
             name={ trackName }
             checked={ isFavorite }
-            onChange={ () => this.onInputChange() }
+            onChange={ () => this.handleCheck() }
           />
         </label>
       </div>

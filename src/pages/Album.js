@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
@@ -19,7 +19,10 @@ class Album extends React.Component {
   }
 
   async getAPI() {
-    const { match: { params: { id } } } = this.props; // FONTE: https://v5.reactrouter.com/web/api/match
+    const { match: { params: { id } } } = this.props;
+    // FONTE: https://v5.reactrouter.com/web/api/match
+    // O match serve para receber parâmetros pela URL.
+    // Nesse caso, os parâmetros são passados pelo ID do objeto que é retornado na API.
     this.setState({ musicList: await getMusics(id) });
     this.setState((prevState) => ({
       albumInfo: prevState.musicList[0],
@@ -30,7 +33,7 @@ class Album extends React.Component {
   render() {
     const { musicList, albumInfo } = this.state;
     return (
-      <main data-testid="page-album">
+      <section data-testid="page-album">
         <Header />
         <div>
           <h1 data-testid="artist-name">{ albumInfo.artistName }</h1>
@@ -41,18 +44,20 @@ class Album extends React.Component {
               key={ index }
               trackName={ music.trackName }
               previewUrl={ music.previewUrl }
+              trackId={ music.trackId }
+              music={ music }
             />
           ))}
         </div>
-      </main>
+      </section>
     );
   }
 }
 
 Album.propTypes = {
-  match: propTypes.shape({
-    params: propTypes.shape({
-      id: propTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };

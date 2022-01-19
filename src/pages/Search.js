@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import '../css/search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -25,6 +26,7 @@ class Search extends React.Component {
     });
   }
 
+  // Função realizada com ajuda das colegas Nicole Calderari e Juliane Alves
   handleClick = (e) => {
     e.preventDefault(); // FONTE: https://pt-br.reactjs.org/docs/handling-events.html
     const { searchArtist } = this.state;
@@ -51,33 +53,31 @@ class Search extends React.Component {
       returnAlbum,
     } = this.state;
     return (
-      <main data-testid="page-search">
-        <section>
-          <Header />
-          <form>
-            <label htmlFor="searchArtist">
-              <input
-                type="text"
-                name="searchArtist"
-                placeholder="Nome do artista"
-                data-testid="search-artist-input"
-                id="searchArtist"
-                value={ searchArtist }
-                onChange={ this.handleChange }
-              />
-            </label>
-            <button
-              type="submit"
-              data-testid="search-artist-button"
-              onClick={ this.handleClick }
-              disabled={ isSearchButtonDisabled }
-            >
-              Pesquisar
-            </button>
-          </form>
-          { isLoading ? <p>Carregando...</p> : null }
-        </section>
-        <section>
+      <section data-testid="page-search" className="searchPage">
+        <Header />
+        <form className="searchForm">
+          <label htmlFor="searchArtist">
+            <input
+              type="text"
+              name="searchArtist"
+              placeholder="Nome do artista"
+              data-testid="search-artist-input"
+              id="searchArtist"
+              value={ searchArtist }
+              onChange={ this.handleChange }
+            />
+          </label>
+          <button
+            type="submit"
+            data-testid="search-artist-button"
+            onClick={ this.handleClick }
+            disabled={ isSearchButtonDisabled }
+          >
+            Pesquisar
+          </button>
+        </form>
+        { isLoading ? <p>Carregando...</p> : null }
+        <section className="resultado">
           {artistName && `Resultado de álbuns de: ${artistName}`}
           { returnAlbum ? (returnArtist.map((artist) => (
             <Link
@@ -89,7 +89,7 @@ class Search extends React.Component {
             </Link>
           ))) : <p> Nenhum álbum foi encontrado </p> }
         </section>
-      </main>
+      </section>
     );
   }
 }

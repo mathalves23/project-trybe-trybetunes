@@ -1,0 +1,27 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.albumInformations {
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+}
+
+.carta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px;
+  margin-top: 60px;
+}
+
+.carta img {
+  height: 200px;
+  width: 200px;
+}

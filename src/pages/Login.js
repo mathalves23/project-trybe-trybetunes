@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom'; // FONTE: https://v5.reactrouter.com/web/api/Redirect
 import { createUser } from '../services/userAPI';
+import '../css/login.css';
+import imgTrybeTunes from '../trybetunes.png';
 
 class Login extends React.Component {
   constructor() {
@@ -26,17 +28,18 @@ class Login extends React.Component {
 
   handleClick = () => {
     const { nameLogin } = this.state;
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, redirectEnable: true });
     createUser({ name: nameLogin }).then(() => {
       // FONTE: https://blog.rocketseat.com.br/quando-utililzar-promises-e-async-await-no-useeffect-do-react/
-      this.setState({ isLoading: false, redirectEnable: true });
+      this.setState({ isLoading: false });
     });
   }
 
   render() {
     const { nameLogin, isLoading, isLoginButtonDisabled, redirectEnable } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login">
+        <img src={ imgTrybeTunes } alt="trybeTunes" />
         <form>
           <label htmlFor="nameLogin">
             <input

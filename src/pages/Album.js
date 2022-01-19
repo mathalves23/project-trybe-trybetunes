@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+import '../css/album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -33,23 +34,27 @@ class Album extends React.Component {
   render() {
     const { musicList, albumInfo } = this.state;
     return (
-      <section data-testid="page-album">
+      <>
         <Header />
-        <div>
-          <h1 data-testid="artist-name">{ albumInfo.artistName }</h1>
-          <h2 data-testid="album-name">{ albumInfo.collectionName }</h2>
-          <img src={ albumInfo.artworkUrl100 } alt={ albumInfo.collectionName } />
-          { musicList.map((music, index) => (
-            <MusicCard
-              key={ index }
-              trackName={ music.trackName }
-              previewUrl={ music.previewUrl }
-              trackId={ music.trackId }
-              music={ music }
-            />
-          ))}
-        </div>
-      </section>
+        <section data-testid="page-album" className="container">
+          <div className="carta">
+            <img src={ albumInfo.artworkUrl100 } alt={ albumInfo.collectionName } />
+          </div>
+          <div className="albumInformations">
+            <h2 data-testid="artist-name">{ albumInfo.artistName }</h2>
+            <p data-testid="album-name">{ albumInfo.collectionName }</p>
+            { musicList.map((music, index) => (
+              <MusicCard
+                key={ index }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                trackId={ music.trackId }
+                music={ music }
+              />
+            ))}
+          </div>
+        </section>
+      </>
     );
   }
 }

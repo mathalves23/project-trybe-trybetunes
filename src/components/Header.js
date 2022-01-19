@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import '../css/header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -25,7 +26,7 @@ class Header extends React.Component {
   render() {
     const { nameLogin } = this.state;
     return (
-      <header data-testid="header-component">
+      <header data-testid="header-component" className="header">
         <div>
           {nameLogin ? <span data-testid="header-user-name">{ nameLogin }</span>
             : (<p>Carregando...</p>)}

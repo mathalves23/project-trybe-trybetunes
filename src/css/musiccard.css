@@ -1,0 +1,26 @@
+.card {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px 2px #00000025;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 600px;
+}
+
+.card span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+}
+
+.card input {
+  margin-left: 10px;
+}
+
+.card audio {
+  border-radius: 10px;
+}

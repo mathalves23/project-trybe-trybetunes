@@ -1,0 +1,50 @@
+.header div:first-child {
+  align-items: center;
+  background-color: #023031;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.header p {
+  color: white;
+}
+
+.header span {
+  background-color: hsl(216, 18%, 16%);
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+  padding: 5px 20px;
+}
+
+.header nav {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
+}
+
+.header nav a {
+  background-color: rgb(241, 241, 241);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 5px 2px #11111125;
+  color: hsl(180, 82%, 26%);
+  cursor: pointer;
+  display: block;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.header nav a:hover {
+  filter: brightness(92%);
+}
+
+.header nav .selected {
+  background-color: hsl(180, 82%, 26%);
+  color: white;
+}
